@@ -1,6 +1,6 @@
 # Antigravity Context Window Monitor (Windows)
 
-Windows 原生的 VS Code 扩展，用于实时监控 Antigravity 对话的上下文窗口使用量。  
+Windows 原生的 Antigravity 扩展，用于实时监控 Antigravity 对话的上下文窗口使用量。  
 A Windows-native VS Code extension for monitoring Antigravity conversation context usage in real time.
 
 它会在状态栏显示当前对话的 token 使用量、上下文窗口上限和占用比例，并支持模型识别、模型切换后的窗口容量更新、双语悬浮提示与历史记录查看。  
