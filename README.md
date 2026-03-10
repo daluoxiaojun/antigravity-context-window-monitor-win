@@ -141,6 +141,13 @@ npx -y @vscode/vsce package --no-dependencies
 - 部分模型名称依赖本地 language server 元数据和别名兜底匹配  
   Some model names depend on local language-server metadata and alias-based fallback matching
 
+## Acknowledgements / 特别鸣谢
+
+特别鸣谢原作者项目提供的设计思路与实现参考：  
+Special thanks to the original project for the design inspiration and implementation reference:
+
+- `https://github.com/AGI-is-going-to-arrive/Antigravity-Context-Window-Monitor`
+
 ## License / 许可证
 
 MIT
