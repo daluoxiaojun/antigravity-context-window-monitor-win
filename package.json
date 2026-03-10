@@ -1,0 +1,129 @@
+{
+  "name": "antigravity-context-window-monitor-win",
+  "displayName": "Antigravity Context Window Monitor (Windows)",
+  "description": "Windows-native Antigravity context usage monitor with status bar, hover details, and history quick pick.",
+  "version": "0.1.8",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daluoxiaojun/antigravity-context-window-monitor-win.git"
+  },
+  "homepage": "https://github.com/daluoxiaojun/antigravity-context-window-monitor-win",
+  "bugs": {
+    "url": "https://github.com/daluoxiaojun/antigravity-context-window-monitor-win/issues"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:antigravityContextMonitor.showHistory",
+    "onCommand:antigravityContextMonitor.refresh"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "antigravityContextMonitor.showHistory",
+        "title": "Antigravity Context Monitor: Show History"
+      },
+      {
+        "command": "antigravityContextMonitor.refresh",
+        "title": "Antigravity Context Monitor: Refresh"
+      }
+    ],
+    "configuration": {
+      "title": "Antigravity Context Monitor",
+      "properties": {
+        "antigravityContextMonitor.pollIntervalSeconds": {
+          "type": "number",
+          "default": 5,
+          "minimum": 2,
+          "maximum": 60,
+          "description": "Polling interval in seconds for refreshing the active Antigravity session usage."
+        },
+        "antigravityContextMonitor.requestTimeoutMs": {
+          "type": "number",
+          "default": 3500,
+          "minimum": 1000,
+          "maximum": 15000,
+          "description": "Timeout in milliseconds for local language-server API requests."
+        },
+        "antigravityContextMonitor.historySize": {
+          "type": "number",
+          "default": 20,
+          "minimum": 5,
+          "maximum": 100,
+          "description": "Maximum number of usage snapshots kept in the QuickPick history list."
+        },
+        "antigravityContextMonitor.defaultContextLimit": {
+          "type": "number",
+          "default": 200000,
+          "minimum": 4096,
+          "maximum": 2000000,
+          "description": "Fallback context window limit used when the API does not return a max-token value and the model is unknown."
+        },
+        "antigravityContextMonitor.endpointCandidates": {
+          "type": "array",
+          "default": [
+            "/exa.language_server_pb.LanguageServerService/GetUserStatus",
+            "/exa.language_server_pb.LanguageServerService/GetChatContextWindow",
+            "/exa.language_server_pb.LanguageServerService/GetConversation",
+            "/exa.language_server_pb.LanguageServerService/GetSessionState",
+            "/exa.language_server_pb.LanguageServerService/GetComposerState"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Ordered list of local endpoints that will be probed for Antigravity usage data."
+        },
+        "antigravityContextMonitor.modelContextOverrides": {
+          "type": "object",
+          "default": {
+            "MODEL_PLACEHOLDER_M37": 1000000,
+            "MODEL_PLACEHOLDER_M36": 1000000,
+            "MODEL_PLACEHOLDER_M18": 1000000,
+            "MODEL_PLACEHOLDER_M35": 200000,
+            "MODEL_PLACEHOLDER_M26": 200000,
+            "MODEL_OPENAI_GPT_OSS_120B_MEDIUM": 128000,
+            "claude-opus-4-6": 200000,
+            "claude-sonnet-4-6": 200000,
+            "claude-opus-4": 200000,
+            "claude-sonnet-4": 200000,
+            "claude-3.5-sonnet": 200000,
+            "claude-3.7-sonnet": 200000,
+            "claude-4-sonnet": 200000,
+            "gpt-4.1": 128000,
+            "gpt-4o": 128000,
+            "gpt-5": 256000,
+            "o1": 200000,
+            "o3": 200000,
+            "gemini-3-flash": 1000000,
+            "gemini-3-1-pro": 1000000,
+            "gemini-1.5-pro": 1000000,
+            "gemini-2.0-flash": 1000000
+          },
+          "description": "Optional model-to-context-limit overrides used for token estimation and fallback rendering."
+        },
+        "antigravityContextMonitor.enableVerboseLogs": {
+          "type": "boolean",
+          "default": false,
+          "description": "Emit detailed process discovery and API probing logs to the Antigravity Context Monitor output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc src/extension.ts src/windowsProcessDiscovery.ts --outDir out --module commonjs --target ES2022 --lib ES2022 --moduleResolution node --types node,vscode --esModuleInterop --skipLibCheck",
+    "watch": "npm run compile -- --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.57",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,9 @@
+**/.git/**
+**/.github/**
+**/.vscode/**
+**/*.tsbuildinfo
+src/**
+node_modules/**
+*.log
+*.vsix
+package-lock.json
