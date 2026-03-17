@@ -30,12 +30,12 @@ It shows token usage, context limit, and usage percentage in the status bar, wit
 内置默认映射包括：  
 Built-in defaults include:
 
-- `MODEL_PLACEHOLDER_M37` -> `1,000,000`
-- `MODEL_PLACEHOLDER_M36` -> `1,000,000`
-- `MODEL_PLACEHOLDER_M18` -> `1,000,000`
-- `MODEL_PLACEHOLDER_M35` -> `200,000`
-- `MODEL_PLACEHOLDER_M26` -> `200,000`
-- `MODEL_OPENAI_GPT_OSS_120B_MEDIUM` -> `128,000`
+- `gemini 3 flash` -> `1,000,000`
+- `gemini 3.1 pro（high）` -> `1,000,000`
+- `gemini 3.1 pro（low）` -> `1,000,000`
+- `Claude opus 4.6` -> `200,000`
+- `Claude sonnet 4.6` -> `200,000`
+- `GPT OSS 120B` -> `128,000`
 
 同时还内置了 Claude、Gemini、GPT、O 系列常见别名的兜底映射。  
 Additional alias-based fallbacks are also included for common Claude, Gemini, GPT, and O-series model names.
